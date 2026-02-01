@@ -1,0 +1,102 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-container class="text-center p-4">
+          <a href="#" ng-href="home/landing">
+            <img src="/assets/brand/Matesup logo with name.png" height="50" />
+          </a>
+        </c-container>
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm>
+              <!--<div>
+    <img src="/assets/brand/Matesup logo with name.png" height="50" />
+  </div>-->
+              <h1>Register</h1>
+              <p class="text-body-secondary">Create your account</p>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="name" cFormControl placeholder="Username" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>&#64;</span>
+                <input autoComplete="email" cFormControl placeholder="Email" />
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" />
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Repeat password" type="password" />
+              </c-input-group>
+              <div class="d-grid">
+                <button cButton color="primary" (click)="btnRegister()">Create Account</button>
+              </div>
+              @if (hasExternalLogins)
+              {
+              <c-container>
+                <c-row class="g-1 align-items-center">
+                  <c-col xs="12">
+                    Or Sign Up using:
+                  </c-col>
+                  @if (hasGoogle)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <img src="/assets/images/btn_google_dark_normal_ios.png" height="48" />
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasFacebook)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg cIcon name="cib-facebook"></svg>
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasMicrosoft)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg [cIcon]="icons.cibMicrosoft"></svg>
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasTwitter)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg cIcon name="cib-twitter"></svg>
+                    </button>
+                  </c-col>
+                  }
+                </c-row>
+              </c-container>
+              }
+              <c-row>
+                <c-col xs="12">
+                  <span>Already have an account?</span>
+                  <button cButton class="mb-1" color="link" (click)="btnLogin()">
+                    SignIn here!
+                  </button>
+                </c-col>
+                <c-col xs="6">
+                  
+                </c-col>
+              </c-row>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

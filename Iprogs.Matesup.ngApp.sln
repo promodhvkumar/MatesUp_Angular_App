@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Iprogs.Matesup.ngApp", "Iprogs.Matesup.ngApp\Iprogs.Matesup.ngApp.esproj", "{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D39E4D4-0F78-A346-79E8-C92EE388CD0F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AA8BDCD-C563-44F2-8D6D-59440BF664B6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://iprogssolutions.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Iprogs.Matesup.ngApp\\Iprogs.Matesup.ngApp.esproj
+		SccProjectName1 = Iprogs.Matesup.ngApp
+		SccLocalPath1 = Iprogs.Matesup.ngApp
+	EndGlobalSection
+EndGlobal

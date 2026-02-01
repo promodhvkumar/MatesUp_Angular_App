@@ -1,0 +1,112 @@
+<div class="bg-light dark:bg-transparent min-vh-100 d-flex flex-row align-items-center">
+  <c-container breakpoint="md">
+    <c-row class="justify-content-center">
+      <c-col lg="10" xl="8">
+        <c-container class="text-center p-4">
+          <a href="#" ng-href="home/landing">
+            <img src="/assets/brand/Matesup logo with name.png" height="50" />
+          </a>
+        </c-container>
+        <c-card-group>
+          <c-card class="p-4">
+            <c-card-body>
+              <form cForm>
+                <!--<div>
+                  <img src="/assets/brand/Matesup logo with name.png" height="50" />
+                </div>-->
+                <h1>Login</h1>
+                <p class="text-body-secondary">
+                  <svg cIcon name="cilLockLocked"></svg>
+                  Sign In to your account
+                </p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <input autoComplete="username" cFormControl placeholder="Username" name="userName" [value]="userName" [(ngModel)]="userName" />
+                </c-input-group>
+                <c-input-group class="mb-4">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilLockLocked"></svg>
+                  </span>
+                  <input autoComplete="current-password" name="password" [(ngModel)]="password" [value]="password"
+                         cFormControl
+                         placeholder="Password"
+                         type="password" />
+                </c-input-group>
+                <c-row>
+                  <c-col xs="6">
+                    <button cButton class="px-4" color="primary" (click)="btnLogin()">
+                      Login
+                    </button>
+                  </c-col>
+                  <c-col class="text-right" xs="6">
+                    <button cButton class="px-0" color="link" (click)="btnForgotPassword()">
+                      Forgot password?
+                    </button>
+                  </c-col>
+                </c-row>
+              </form>
+            </c-card-body>
+          </c-card>
+          <c-card [ngStyle]="{'minWidth.%': 44}" class="text-white bg-primary py-5">
+            <c-card-body class="text-center">
+              @if (hasExternalLogins)
+              {
+              <c-container>
+                <c-row class="g-1 align-items-center">
+                  <c-col xs="12">
+                    Or Sign In using:
+                  </c-col>
+                  @if (hasGoogle)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <img src="/assets/images/btn_google_dark_normal_ios.png" height="48" />
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasFacebook)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg cIcon name="cib-facebook"></svg>
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasMicrosoft)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg [cIcon]="icons.cibMicrosoft"></svg>
+                    </button>
+                  </c-col>
+                  }
+                  @if (hasTwitter)
+                  {
+                  <c-col xs="3">
+                    <button cButton color="transparent">
+                      <svg cIcon name="cib-twitter"></svg>
+                    </button>
+                  </c-col>
+                  }
+                </c-row>
+              </c-container>
+              }
+              <div>
+                &nbsp;&nbsp;
+                <h2>Sign up</h2>
+                <p>
+                  Don't have an account yet. Register now!
+                </p>
+                <button [active]="true" cButton class="mt-3" color="primary" (click)="btnRegister()">
+                  Register Now!
+                </button>
+              </div>
+            </c-card-body>
+          </c-card>
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

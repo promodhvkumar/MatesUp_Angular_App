@@ -1,0 +1,117 @@
+<c-card class="mb-3">
+  <!-- <c-card-header ngPreserveWhitespaces>
+    <strong>Arena</strong> <small></small>
+  </c-card-header> -->
+  <c-card-body>
+    <c-tabs [activeItemKey]="0" (activeItemKeyChange)="handleActiveItemChange($event)">
+      <c-tabs-list variant="underline-border">
+        <button cTab [itemKey]="0">
+          <svg [cIcon]="icons.cilBank" class="me-2"></svg>
+          Arena
+        </button>
+        <button cTab [itemKey]="1">
+          <svg cIcon class="me-2" name="cilUser"></svg>
+          Users
+        </button>
+      </c-tabs-list>
+      <c-tabs-content>
+        <c-tab-panel [itemKey]="0" class="p-1">
+          <form cForm>
+            <c-row>
+              <c-col xs="12">
+                <c-card class="mb-4">
+                  <c-card-body>
+                    <div class="mb-3">
+                      <!-- <label cLabel for="exampleFormControlTextarea1">Send Message:</label> -->
+                      <textarea cFormControl id="exampleFormControlTextarea1" placeholder="Type your Message here!" rows="2" class="col-12"></textarea>
+                    </div>
+                  </c-card-body>
+                  <c-card-footer>
+                    <c-col xs="12" class="text-right">
+                      <button cButton class="px-4" color="primary">
+                        <svg [cIcon]="icons.cilSend" class="me-1"></svg>
+                        Send
+                      </button>
+                    </c-col>
+                  </c-card-footer>
+                </c-card>
+              </c-col>
+            </c-row>
+          </form>
+        </c-tab-panel>
+        <c-tab-panel [itemKey]="1" class="p-3">
+          <c-row>
+            <c-col xs="12">
+              <table cTable>
+                <thead>
+                  <tr>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Joined Date</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Admin</th>
+                    <td>Admin</td>
+                    <td>2025-01-01</td>
+                    <td>NA</td>
+                  </tr>
+                  <tr cTableColor="primary">
+                    <th scope="row">User 1</th>
+                    <td>Moderator</td>
+                    <td>2025-02-01</td>
+                    <td></td>
+                  </tr>
+                  <tr cTableColor="secondary">
+                    <th scope="row">User 2</th>
+                    <td>Member</td>
+                    <td>2025-03-01</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </c-col>
+          </c-row>
+        </c-tab-panel>
+      </c-tabs-content>
+    </c-tabs>
+    <hr>
+    <c-tabs [activeItemKey]="1" (activeItemKeyChange)="handleActiveItemChange($event)">
+      <c-tabs-list variant="tabs">
+        <button cTab [itemKey]="1">
+          <svg [cIcon]="icons.cilCommentBubble" class="me-2"></svg>
+          Messages
+        </button>
+        <button cTab [itemKey]="2">
+          <svg [cIcon]="icons.cilAudio" class="me-2"></svg>
+          Voice Chat
+        </button>
+        <button cTab [itemKey]="3">
+          <svg [cIcon]="icons.cilVideo" class="me-2"></svg>
+          Vid Chat
+        </button>
+        <button cTab [itemKey]="0">
+          <svg [cIcon]="icons.cilBullhorn" class="me-2"></svg>
+          Megaphone
+        </button>
+      </c-tabs-list>
+      <c-tabs-content>
+        <c-tab-panel class="p-3 preview" [itemKey]="1" cRounded="bottom">
+
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="2" cRounded="bottom">
+          New feature - coming soon!
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="3" cRounded="bottom">
+          New feature - coming soon!
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="0" cRounded="bottom">
+
+        </c-tab-panel>
+      </c-tabs-content>
+    </c-tabs>
+  </c-card-body>
+</c-card>

@@ -1,0 +1,89 @@
+<c-modal #userModal [visible]="true" [scrollable]="true" backdrop="static" alignment="center" id="userModal">
+    <c-modal-header>
+        @if(appSvc.usrModalSvc.selectedUser.available == "online")
+        {
+            <c-avatar src="{{appSvc.usrModalSvc.selectedUser.avatarUrl}}" status="success"></c-avatar>
+        }
+        @else if (appSvc.usrModalSvc.selectedUser.available == "offline") {
+            <c-avatar src="{{appSvc.usrModalSvc.selectedUser.avatarUrl}}" status="danger"></c-avatar>
+        }
+        @else {
+            <c-avatar src="{{appSvc.usrModalSvc.selectedUser.avatarUrl}}" status="warning"></c-avatar>
+        }
+        <h5 cModalTitle>&nbsp;{{appSvc.usrModalSvc.selectedUser.UserMaster.NickName}}</h5>
+        <button (click)=userModaltoggle() cButtonClose></button>
+    </c-modal-header>
+    <c-modal-body>
+        <c-card class="mb-3">
+            <!-- <c-card-header>
+                {{appSvc.usrModalSvc.selectedUser.UserMaster.NickName}}
+            </c-card-header> -->
+            <c-card-body>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">User Name</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.UserMaster.NickName}}</label>
+                    </c-col>
+                </c-row>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">Name</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.UserMaster.FirstName + " " + appSvc.usrModalSvc.selectedUser.UserMaster.LastName}}</label>
+                    </c-col>
+                </c-row>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">Age</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.age}}</label>
+                    </c-col>
+                </c-row>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">City</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.city}}</label>
+                    </c-col>
+                </c-row>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">State</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.state}}</label>
+                    </c-col>
+                </c-row>
+                <c-row class="g-3">
+                    <c-col [md]="6">
+                        <label cLabel for="inputEmail4">Country</label>
+                    </c-col>
+                    <c-col [md]="6">
+                        <label cLabel for="inputPassword4">{{appSvc.usrModalSvc.selectedUser.country}}</label>
+                    </c-col>
+                </c-row>
+            </c-card-body>
+            <c-card-footer class="d-flex justify-content-between align-content-center">
+                <button cButton color="primary">
+                    Follow
+                </button>
+                <button cButton color="primary">
+                    Block
+                </button>
+                <button cButton color="primary">
+                    Message
+                </button>
+            </c-card-footer>
+        </c-card>
+    </c-modal-body>
+    <!--<c-modal-footer>
+        <button (click)="userModaltoggle()" cButton color="primary">
+            Close
+        </button>
+    </c-modal-footer>-->
+</c-modal>

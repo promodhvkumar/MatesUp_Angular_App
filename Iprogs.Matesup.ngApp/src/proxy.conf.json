@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://lpt-godfather:4431",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,107 @@
+<c-card>
+  <c-card-header>
+    My Chats
+  </c-card-header>
+  <c-card-body>
+    <div>
+      <c-accordion [alwaysOpen]="true">
+        <c-accordion-item #item0="cAccordionItem" [visible]="false">
+          <ng-template cTemplateId="accordionHeaderTemplate">
+            <button class="primary" (click)="item0.toggleItem()" [collapsed]="!item0.visible" cAccordionButton>
+              Filters
+            </button>
+          </ng-template>
+          <ng-template cTemplateId="accordionBodyTemplate">
+            <div class="accordion-body">
+              <form [formGroup]="genderFilter">
+                <label cLabel for="genderFilter">Gender:</label>
+                @for (gender of genders; track gender.id) {
+                <c-form-check class="{{gender.color}}">
+                  <input cFormCheckInput id="genderFilter-{{gender.id}}" type="radio" [value]="gender.id" formControlName="genderFilter" [(ngModel)]="genderFilterValue" />
+                  <!-- <svg [cIcon]="gender.icon" class="me-0"></svg> -->
+                  &nbsp;
+                  <label cFormCheckLabel for="genderFilter-{{gender.id}}">{{ gender.name }}</label>
+                </c-form-check>
+                }
+              </form>
+              <hr>
+              <form [formGroup]="verifiedFilter">
+                <label cLabel for="verifiedFilter">Verified User:</label>
+                @for (verify of verified; track verify.id) {
+                <c-form-check class="{{verify.color}}">
+                  <input cFormCheckInput id="verifiedFilter-{{verify.id}}" type="radio" [value]="verify.id" formControlName="verifiedFilter" [(ngModel)]="verifiedFilterValue" />
+                  <!-- <svg [cIcon]="verify.icon" class="me-0"></svg> -->
+                  &nbsp;
+                  <label cFormCheckLabel for="verifiedFilter-{{verify.id}}">{{ verify.name }}</label>
+                </c-form-check>
+                }
+              </form>
+              <hr>
+              <form [formGroup]="onlineStatusFilter">
+                <label cLabel for="onlineStatusFilter">Status:</label>
+                @for (status of onlineStatus; track status.id) {
+                <c-form-check>
+                  <input cFormCheckInput id="onlineStatusFilter-{{status.id}}" type="radio" [value]="status.id" formControlName="onlineStatusFilter" [(ngModel)]="onlineStatusFilterValue" />
+                  <c-badge class="{{status.color}}" shape="rounded-pill" [cPopoverTrigger]="'hover'" cPopover="{{status.name}}" cPopoverPlacement="top">
+                    <!-- <svg [cIcon]="icons.cilCircle" class="me-0"></svg> -->
+                  </c-badge>
+                  &nbsp;
+                  <label cFormCheckLabel for="onlineStatusFilter-{{status.id}}">{{ status.name }}</label>
+                </c-form-check>
+                }
+              </form>
+            </div>
+          </ng-template>
+        </c-accordion-item>
+      </c-accordion>
+    </div>
+    <br>
+    <div class="m-0">
+      <table cTable hover striped borderless [responsive]="true">
+        <!-- <thead>
+          <tr>
+            <th scope="col">#</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          @for(user of ActiveUsersList; track user.UserId)
+          {
+          <tr>
+            <th scope="row" class="d-flex align-items-center">
+              @if(user.Online){
+              <c-avatar src="{{appService.httpService.baseURL}}api/Locker/ProfilePic?Id={{user.UserId}}" status="success"
+                title="{{user.NickName + ' (Online)'}}"></c-avatar>
+              }
+              @else if (!user.Online)
+              {
+              <c-avatar src="{{appService.httpService.baseURL}}api/Locker/ProfilePic?Id={{user.UserId}}" status="danger"
+                title="{{user.NickName + ' (Offline)'}}"></c-avatar>
+              }
+            </th>
+            <th>
+              <span title="{{user.NickName}}">
+                <!-- {{user.NickName.substring(0,10) + (user.NickName.length > 10 ? '...' : '')}} -->
+                 {{user.NickName}}
+              </span>
+            </th>
+            <th>
+              @for(gender of appService.getAppConstants().GetGender(user.Gender); track gender.id) {
+              <fa-icon [icon]="gender.icon"
+                class="{{gender.color}}"></fa-icon>
+              }
+            </th>
+            <th>
+              @if(user.VerifiedUser) {
+              <fa-icon [icon]="appService.getAppConstants().GetUserVerStatus(1).icon" class="online" title="Verified"></fa-icon>
+              }
+              @else {
+              <fa-icon [icon]="appService.getAppConstants().GetUserVerStatus(2).icon" class="away" title="Unverified"></fa-icon>
+              }
+            </th>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </c-card-body>
+</c-card>

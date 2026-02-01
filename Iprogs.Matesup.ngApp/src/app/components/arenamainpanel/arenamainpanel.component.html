@@ -1,0 +1,240 @@
+<c-card class="mb-3">
+  <!-- <c-card-header ngPreserveWhitespaces>
+    <strong>Arena</strong> <small></small>
+  </c-card-header> -->
+  <c-card-body>
+    <c-tabs [activeItemKey]="0" (activeItemKeyChange)="handleActiveItemChange($event)">
+      <c-tabs-list variant="underline-border">
+        <button cTab [itemKey]="0">
+          <svg [cIcon]="icons.cilBank" class="me-2"></svg>
+          Arena
+        </button>
+        <button cTab [itemKey]="1">
+          <svg cIcon class="me-2" name="cilUser"></svg>
+          Members
+        </button>
+        <button cTab [itemKey]="2">
+          <svg cIcon class="me-2" name="cilSettings"></svg>
+          Room Settings
+        </button>
+      </c-tabs-list>
+      <c-tabs-content>
+        <c-tab-panel [itemKey]="0" class="p-1">
+          <br />
+          <form [formGroup]="newMessageForm">
+            <c-row>
+              <c-col xs="12">
+                <c-card class="mb-1">
+                  <c-card-header>
+                    {{ChatRoomDetails.ChatRoomName}}
+                  </c-card-header>
+                  <c-card-body>
+                    <div class="mb-3">
+                      <!-- <label cLabel for="exampleFormControlTextarea">Send Message:</label> -->
+                      <textarea cFormControl id="exampleFormControlTextarea" placeholder="Type your Message here!" rows="3" class="col-12" [value]="newMessage" formControlName="newMessageForm" [(ngModel)]="newMessage"></textarea>
+                      <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" formControlName="newMessageForm"></angular-editor>
+                    </div>
+                    <div>{{htmlContent}}</div>
+                  </c-card-body>
+                  <c-card-footer>
+                    <c-col xs="12" class="text-right">
+                      <button cButton class="px-4" color="primary" (click)="addNewMessage()">
+                        <svg [cIcon]="icons.cilSend" class="me-1"></svg>
+                        Send
+                      </button>
+                    </c-col>
+                  </c-card-footer>
+                </c-card>
+              </c-col>
+            </c-row>
+          </form>
+        </c-tab-panel>
+        <c-tab-panel [itemKey]="1" class="p-3">
+          <c-row>
+            <c-col xs="12">
+              <table cTable>
+                <thead>
+                  <tr>
+                    <th scope="col">UserName</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Joined Date</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (user of UsersList; track user.UserId)
+                  {
+                  <tr>
+                    <th scope="row">{{user.NickName}}</th>
+                    <th scope="row">{{user.FirstName}}</th>
+                    <th scope="row">{{user.LastName}}</th>
+                    <td>Admin</td>
+                    <td>2025-01-01</td>
+                    <td>NA</td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+
+            </c-col>
+          </c-row>
+        </c-tab-panel>
+        <c-tab-panel [itemKey]="2" class="p-3">
+          <c-row>
+            <c-col xs="6" class="p-2">
+              <c-form-check [switch]="true">
+                <input cFormCheckInput type="checkbox" />
+                <label cFormCheckLabel>Need Password?</label>
+              </c-form-check>
+            </c-col>
+            <c-col xs="6" class="p-2">
+              <input type="password" cFormControl placeholder="Password" class="col-12">
+            </c-col>
+            <c-col xs="6" class="p-2">
+            </c-col>
+            <c-col xs="6" class="p-2">
+              <input type="password" cFormControl placeholder="Confirm Password" class="col-12">
+            </c-col>
+            <c-col xs="9">
+              <c-input-group class="mb-3">
+                <span cInputGroupText>https://matesup.com/#/cr?n=</span>
+                <input aria-label="ArenaName" cFormControl />
+                <span cInputGroupText>
+                  <svg [cIcon]="icons.cilClone" class="me-2"></svg>
+                </span>
+              </c-input-group>
+              <!-- <span cInputGroupText id="basic-addon3" class="col-3">https://matesup.com/#/cr/</span>
+              <input aria-describedby="basic-addon3" class="col-6" cFormControl id="basic-url"/>
+              <span class="p-2 col-1">
+                <svg [cIcon]="icons.cilClone" class="me-2"></svg>
+              </span> -->
+            </c-col>
+            <c-col xs="3" class="p-2 text-right">
+              <button cButton class="px-4" color="primary">
+                Check Availability!
+              </button>
+            </c-col>
+            <c-col xs="12" class="p-2 text-right">
+              <button cButton class="px-4" color="primary">
+                <svg [cIcon]="icons.cilSave" class="me-1"></svg>
+                Save
+              </button>
+            </c-col>
+          </c-row>
+        </c-tab-panel>
+      </c-tabs-content>
+    </c-tabs>
+    <hr>
+    <c-tabs [activeItemKey]="0" (activeItemKeyChange)="handleActiveItemChange($event)">
+      <c-tabs-list variant="tabs">
+        <button cTab [itemKey]="0">
+          <svg [cIcon]="icons.cilBullhorn" class="me-2"></svg>
+          Megaphone
+        </button>
+        <button cTab [itemKey]="1">
+          <svg [cIcon]="icons.cilCommentBubble" class="me-2"></svg>
+          Messages
+        </button>
+        <!--<button cTab [itemKey]="2">
+          <svg [cIcon]="icons.cilAudio" class="me-2"></svg>
+          Voice Chat
+        </button>
+        <button cTab [itemKey]="3">
+          <svg [cIcon]="icons.cilVideo" class="me-2"></svg>
+          Vid Chat
+        </button>-->
+      </c-tabs-list>
+      <c-tabs-content>
+        <c-tab-panel class="p-3 preview" [itemKey]="0" cRounded="bottom">
+          @for (shout of MegaPhoneShoutsList; track shout.Id)
+          {
+          <c-row>
+            <c-col xs="1" class="d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <div class="m-1 p-1">
+                  <c-avatar src="./assets/images/avatars/{{shout.UserId}}.jpg" status="success"></c-avatar>
+                </div>
+              </div>
+            </c-col>
+            <c-col xs="11">
+              <c-card class="mb-1">
+                <c-card-body>
+                  <div class="d-flex">
+                    <div>
+                      <a routerLink class="primary">{{shout.UserId}}</a>
+                      <span>{{shout.Message}} - {{shout.Id}}</span>
+                    </div>
+                    <div class="ms-auto"></div>
+                    <div class="ms-auto">{{shout.SentOn.toLocaleString(currentLanguage)}}</div>
+                  </div>
+                </c-card-body>
+              </c-card>
+            </c-col>
+          </c-row>
+          }
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="1" cRounded="bottom">
+          @for (message of MessagesList; track message.Id)
+          {
+          @if (message.UserId !== CurrentUserId)
+          {
+          <c-row>
+            <c-col xs="1" class="d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <div class="m-1 p-1">
+                  <c-avatar src="./assets/images/avatars/{{message.UserId}}.jpg" status="success"></c-avatar>
+                </div>
+              </div>
+            </c-col>
+            <c-col xs="11">
+              <c-card class="mb-1">
+                <c-card-header>
+                  <div class="d-flex">
+                    <div><a routerLink class="primary">{{message.UserId}}</a></div>
+                    <div class="ms-auto"></div>
+                    <div class="ms-auto">{{message.SentOn.toLocaleString()}}</div>
+                  </div>
+                </c-card-header>
+                <c-card-body>
+                  {{message.Message}} - {{message.Id}}
+                </c-card-body>
+              </c-card>
+            </c-col>
+          </c-row>
+          }
+          @else if (message.UserId === CurrentUserId)
+          {
+          <c-row>
+            <c-col xs="11">
+              <c-card class="mb-1">
+                <c-card-header class="text-right">
+                  <div class="ms-auto">{{message.SentOn.toLocaleString()}}</div>
+                </c-card-header>
+                <c-card-body>
+                  {{message.Message}} - {{message.Id}}
+                </c-card-body>
+              </c-card>
+            </c-col>
+            <c-col xs="1" class="d-flex align-items-center">
+              <div class="d-flex">
+                <div class="m-1 p-1">
+                  <c-avatar color="primary" textColor="light">Me</c-avatar>
+                </div>
+              </div>
+            </c-col>
+          </c-row>
+          }
+          }
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="2" cRounded="bottom">
+          New feature - coming soon!
+        </c-tab-panel>
+        <c-tab-panel class="p-3 preview" [itemKey]="3" cRounded="bottom">
+          New feature - coming soon!
+        </c-tab-panel>
+      </c-tabs-content>
+    </c-tabs>
+  </c-card-body>
+</c-card>
